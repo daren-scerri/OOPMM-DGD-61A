@@ -5,18 +5,19 @@ using System.Collections;
 public class GameManager : MonoBehaviour
 {
     Enemy bob, alice; // declare bob and alice
-    int playerHP = 10; //This is our hp
+    int playerHP = 10;
+    int playerDamage = 3; //This is our damage power
     void Start()
     {
-        bob = new Enemy(5, 2, "Bob"); //Bob has 5 hp, 2 damage, and a name of Bob
-        alice = new Enemy(2, 5, "Alice"); //Alice has 2 hp, 5 damage, and a name of Alice
+        bob = new Enemy(50, 2, "Bob"); //Bob has 5 hp, 2 damage, and a name of Bob
+        alice = new Enemy(20, 5, "Alice"); //Alice has 2 hp, 5 damage, and a name of Alice
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
             //Bob takes damage if Spacebar is pressed
-            bob.TakeDamage();
+            bob.TakeDamage(playerDamage);
         else if (Input.GetKeyDown(KeyCode.LeftShift))
             //Alice takes damage if left shift is pressed
             alice.TakeDamage();
@@ -32,14 +33,39 @@ public class GameManager : MonoBehaviour
             playerHP -= alice.damage;
             Debug.Log("Player HP: " + playerHP);
         }
-        if (bob.hitpoints < 1)
-            //if bob's hp is under 1, he dies
-            bob.Die();
-        if (alice.hitpoints < 1)
-            //if alice's hp is under 1, she dies
-            alice.Die();
+
+
         if (playerHP < 1)
+        {
             //if our hp is under 1, we die
             Debug.Log("You Died!");
+            QuitGame();
+        }
+
+        if (playerHP < 1)
+        {
+            //if our hp is under 1, we die
+            Debug.Log("You Died!");
+            QuitGame();
+        }
+
+        if (bob.hitpoints < 1 && alice.hitpoints < 1)
+        {
+            //if our hp is under 1, we die
+            Debug.Log("Player Wins!");
+            QuitGame();
+        }
+
+
     }
- }
+
+    public void QuitGame()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
+        Application.Quit();
+    }
+
+
+}
