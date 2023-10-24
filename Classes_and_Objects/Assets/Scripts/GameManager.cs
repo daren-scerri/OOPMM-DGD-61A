@@ -4,33 +4,37 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
-    Enemy bob, alice; // declare bob and alice
+    GameObject bob, alice; // declare bob and alice
     int playerHP = 10;
     int playerDamage = 3; //This is our damage power
+    Enemy _bob_instance, _alice_instance;
+
     void Start()
     {
-        bob = new Enemy(50, 2, "Bob"); //Bob has 5 hp, 2 damage, and a name of Bob
-        alice = new Enemy(20, 5, "Alice"); //Alice has 2 hp, 5 damage, and a name of Alice
+        bob = Instantiate(Resources.Load("Bob"), new Vector3(-2f, 0f, 0f), Quaternion.identity) as GameObject; 
+        alice = Instantiate(Resources.Load("Alice"), new Vector3(2f, 0f, 0f), Quaternion.identity) as GameObject; //Alice has 2 hp, 5 damage, and a name of Alice
+        _bob_instance = bob.GetComponent<Enemy>();
+        _alice_instance = alice.GetComponent<Enemy>();
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
             //Bob takes damage if Spacebar is pressed
-            bob.TakeDamage(playerDamage);
+            _bob_instance.TakeDamage(playerDamage);
         else if (Input.GetKeyDown(KeyCode.LeftShift))
             //Alice takes damage if left shift is pressed
-            alice.TakeDamage();
+            _alice_instance.TakeDamage();
         else if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             //Player takes damage from bob if left control is pressed
-            playerHP -= bob.damage;
+            playerHP -= _bob_instance.damage;
             Debug.Log("Player HP: " + playerHP);
         }
         else if (Input.GetKeyDown(KeyCode.LeftAlt))
         {
             //Player takes damage from alice if left alt is pressed
-            playerHP -= alice.damage;
+            playerHP -= _alice_instance.damage;
             Debug.Log("Player HP: " + playerHP);
         }
 
@@ -49,10 +53,10 @@ public class GameManager : MonoBehaviour
             QuitGame();
         }
 
-        if (bob.hitpoints < 1 && alice.hitpoints < 1)
+        if (_bob_instance.hitpoints < 1 && _alice_instance.hitpoints < 1)
         {
             //if our hp is under 1, we die
-            Debug.Log("Player Wins!");
+            Debug.Log("Player Win!");
             QuitGame();
         }
 
