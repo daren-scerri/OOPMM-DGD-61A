@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class FireUp : MonoBehaviour
 {
-    
-    public void Fire(Rigidbody2D rb, float yspeed)
+    [SerializeField] float yspeed;
+    public void Fire(Rigidbody2D rb)
     {
         Vector2 myforce = new Vector2(0, yspeed);
         rb.AddForce(myforce);
