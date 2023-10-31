@@ -133,8 +133,8 @@ GameObject:
   m_Component:
   - component: {fileID: 116284805}
   - component: {fileID: 116284804}
-  - component: {fileID: 116284803}
   - component: {fileID: 116284806}
+  - component: {fileID: 116284807}
   m_Layer: 0
   m_Name: SmallBullet
   m_TagString: Untagged
@@ -142,20 +142,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &116284803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 116284802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 151e23af74b66a84abebdf9729bf39d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  yspeed: 400
-  xspeed: 200
 --- !u!212 &116284804
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -250,6 +236,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &116284807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116284802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7be443ed90c75449c993de837e28d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yspeed: 700
+  xspeed: 300
 --- !u!1 &165353930
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,10 +16,7 @@ public class DefaultBullet : MonoBehaviour
         rb.gravityScale = 0;
     }
     protected virtual void Start()
-    {
-       
-        
-        
+    {     
         Vector2 myforce = new Vector2(0, yspeed);
         rb.AddForce(myforce);
     }
@@ -37,7 +34,10 @@ public class DefaultBullet : MonoBehaviour
     }
 
 
-
+    private void OnBecameInvisible()
+    {
+        Destroy(this.gameObject);
+    }
 
 
 }
