@@ -26,12 +26,7 @@ public class DefaultBullet : MonoBehaviour
  * 1. apply a force on the horizontal axis
  * 2. set the gravity to 0.98
  */
-    protected void HorizontalProjectile()
-    {
-        rb.gravityScale = 0.98f;
-        Vector2 myforce = new Vector2(xspeed, 0f);
-        rb.AddForce(myforce);
-    }
+
 
 
     private void OnBecameInvisible()

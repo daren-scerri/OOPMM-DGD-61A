@@ -2,18 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cannonball : DefaultBullet
+public class MoveHorizontal : MonoBehaviour
 {
-
+    [SerializeField] float xspeed;
     // Start is called before the first frame update
-    protected override void Start()
-    {
-        base.Start();
-        HorizontalProjectile();
-        
-    }
-
-    protected void HorizontalProjectile()
+    public void FireProjectile(Rigidbody2D rb)
     {
         rb.gravityScale = 0.98f;
         Vector2 myforce = new Vector2(xspeed, 0f);
