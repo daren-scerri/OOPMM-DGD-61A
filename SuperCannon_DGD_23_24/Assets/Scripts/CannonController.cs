@@ -5,10 +5,15 @@ using UnityEngine;
 public class CannonController : MonoBehaviour
 {
     Quaternion clampRotationLow, clampRotationHigh;
+    [SerializeField] GameObject bullet1prefab;
+    [SerializeField] GameObject bullet2prefab;
 
+    CannonFiring _firingInstance;
     // Start is called before the first frame update
     void Start()
     {
+      _firingInstance =GetComponentInChildren<CannonFiring>();
+
       clampRotationLow = Quaternion.Euler(0f, 0f, -70f);
       clampRotationHigh = Quaternion.Euler(0f, 0f, +70f);
     }
@@ -17,6 +22,11 @@ public class CannonController : MonoBehaviour
     void Update()
     {
         PointAtMouse();
+
+        if (Input.GetMouseButtonDown(0)) 
+        {
+            _firingInstance.FireCannon(bullet1prefab);
+        }
     }
 
     void PointAtMouse()
