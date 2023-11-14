@@ -27,6 +27,12 @@ public class CannonController : MonoBehaviour
         {
             _firingInstance.FireCannon(bullet1prefab);
         }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            _firingInstance.FireCannon(bullet2prefab);
+        }
+
     }
 
     void PointAtMouse()

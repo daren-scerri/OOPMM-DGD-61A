@@ -16,8 +16,8 @@ public class Cannonball : DefaultBullet
     protected void HorizontalProjectile()
     {
         rb.gravityScale = 0.98f;
-        Vector2 myforce = new Vector2(speed, 0f);
-        rb.AddForce(myforce);
+       // Vector2 myforce = new Vector2(speed, 0f);
+       // rb.AddForce(myforce);
     }
 
 
