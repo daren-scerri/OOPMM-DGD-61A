@@ -17,11 +17,11 @@ public class DefaultBullet : MonoBehaviour
     }
     protected virtual void Start()
     {     
-        Vector2 bulletDirection = new Vector2(GameData.MousePos.x, GameData.MousePos.y + 5f);
-        Debug.Log("Bullet direction not normalized: " + bulletDirection);
-        bulletDirection.Normalize();
-        Debug.Log("Bullet direction normalized: " + bulletDirection);
-        GetComponent<Rigidbody2D>().velocity = bulletDirection * speed;
+        //Vector2 bulletDirection = new Vector2(GameData.MousePos.x, GameData.MousePos.y + 5f);
+        //Debug.Log("Bullet direction not normalized: " + bulletDirection);
+       // bulletDirection.Normalize();
+       // Debug.Log("Bullet direction normalized: " + bulletDirection);
+        GetComponent<Rigidbody2D>().velocity = transform.up * speed;
     }
 
     /* Add a new method to :
