@@ -7,6 +7,9 @@ public class CannonController : MonoBehaviour
     Quaternion clampRotationLow, clampRotationHigh;
     [SerializeField] GameObject bullet1prefab;
     [SerializeField] GameObject bullet2prefab;
+    [SerializeField] float bulletFiringPeriod;
+
+    Coroutine myFiringCoroutine1;
 
     CannonFiring _firingInstance;
     // Start is called before the first frame update
@@ -25,12 +28,29 @@ public class CannonController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0)) 
         {
-            _firingInstance.FireCannon(bullet1prefab);
+            //_firingInstance.FireCannon(bullet1prefab);
+            if (myFiringCoroutine1 == null) myFiringCoroutine1 = StartCoroutine(FireContinuously(bullet1prefab));
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            //_firingInstance.FireCannon(bullet1prefab);
+            StopCoroutine(myFiringCoroutine1);
+            myFiringCoroutine1 = null;
         }
 
         if (Input.GetMouseButtonDown(1))
         {
             _firingInstance.FireCannon(bullet2prefab);
+        }
+
+    }
+
+    IEnumerator FireContinuously(GameObject mybulletPrefab)
+    {
+        while (true)
+        {
+            _firingInstance.FireCannon(mybulletPrefab);
+            yield return new WaitForSeconds(bulletFiringPeriod);
         }
 
     }
