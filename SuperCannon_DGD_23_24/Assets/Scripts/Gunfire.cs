@@ -5,10 +5,11 @@ using UnityEngine;
 public class Gunfire : DefaultBullet
 {
     // Start is called before the first frame update
-    protected override void Start()
+    protected override void OnEnable()
     {
-        base.Start();
-        rb.drag = 0.5f;    
+        speed = 20f;
+        base.OnEnable();
+        rb.drag = 0.5f;
     }
 
 

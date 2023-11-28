@@ -12,6 +12,9 @@ public class CannonController : MonoBehaviour
     Coroutine myFiringCoroutine1, myFiringCoroutine2;
 
     CannonFiring _firingInstance;
+
+    public ObjectPooling bullet1pool, bullet2pool;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,8 +31,9 @@ public class CannonController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0)) 
         {
+            
             //_firingInstance.FireCannon(bullet1prefab);
-            if (myFiringCoroutine1 == null) myFiringCoroutine1 = StartCoroutine(FireContinuously(bullet1prefab));
+            if (myFiringCoroutine1 == null) myFiringCoroutine1 = StartCoroutine(FireContinuously(bullet1pool));
         }
         if (Input.GetMouseButtonUp(0))
         {
@@ -38,10 +42,11 @@ public class CannonController : MonoBehaviour
             myFiringCoroutine1 = null;
         }
 
+        
         if (Input.GetMouseButtonDown(1))
         {
-            //_firingInstance.FireCannon(bullet2prefab);  //to comment out when implemented coroutine 
-            if (myFiringCoroutine2 == null) myFiringCoroutine2 = StartCoroutine(FireContinuously(bullet2prefab));
+            //_firingInstance.FireCannon(bullet2prefab);  //comment out when implemented coroutine 
+            if (myFiringCoroutine2 == null) myFiringCoroutine2 = StartCoroutine(FireContinuously(bullet2pool));
         }
         if (Input.GetMouseButtonUp(1))
         {
@@ -49,14 +54,16 @@ public class CannonController : MonoBehaviour
             StopCoroutine(myFiringCoroutine2);
             myFiringCoroutine2 = null;
         }
+        
 
     }
 
-    IEnumerator FireContinuously(GameObject mybulletPrefab)
+    IEnumerator FireContinuously(ObjectPooling myObjectPool)
     {
         while (true)
         {
-            _firingInstance.FireCannon(mybulletPrefab);
+            GameObject mybullet = myObjectPool.GetPooledObject();
+            _firingInstance.FireCannon(mybullet);
             yield return new WaitForSeconds(bulletFiringPeriod);
         }
 

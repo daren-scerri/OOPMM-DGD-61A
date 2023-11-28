@@ -15,12 +15,8 @@ public class DefaultBullet : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0;
     }
-    protected virtual void Start()
+    protected virtual void OnEnable()
     {     
-        //Vector2 bulletDirection = new Vector2(GameData.MousePos.x, GameData.MousePos.y + 5f);
-        //Debug.Log("Bullet direction not normalized: " + bulletDirection);
-       // bulletDirection.Normalize();
-       // Debug.Log("Bullet direction normalized: " + bulletDirection);
         GetComponent<Rigidbody2D>().velocity = transform.up * speed;
     }
 
@@ -34,7 +30,8 @@ public class DefaultBullet : MonoBehaviour
 
     private void OnBecameInvisible()
     {
-        Destroy(this.gameObject);
+       // Destroy(this.gameObject);   Instead of Destroy when we use object pooling we set the bullet back to inactive (goes back in the pool)
+       this.gameObject.SetActive(false);
     }
 
 
