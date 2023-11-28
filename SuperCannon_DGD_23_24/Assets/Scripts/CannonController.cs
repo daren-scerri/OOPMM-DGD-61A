@@ -9,7 +9,7 @@ public class CannonController : MonoBehaviour
     [SerializeField] GameObject bullet2prefab;
     [SerializeField] float bulletFiringPeriod;
 
-    Coroutine myFiringCoroutine1;
+    Coroutine myFiringCoroutine1, myFiringCoroutine2;
 
     CannonFiring _firingInstance;
     // Start is called before the first frame update
@@ -40,7 +40,14 @@ public class CannonController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))
         {
-            _firingInstance.FireCannon(bullet2prefab);
+            //_firingInstance.FireCannon(bullet2prefab);  //to comment out when implemented coroutine 
+            if (myFiringCoroutine2 == null) myFiringCoroutine2 = StartCoroutine(FireContinuously(bullet2prefab));
+        }
+        if (Input.GetMouseButtonUp(1))
+        {
+            //_firingInstance.FireCannon(bullet1prefab);
+            StopCoroutine(myFiringCoroutine2);
+            myFiringCoroutine2 = null;
         }
 
     }
