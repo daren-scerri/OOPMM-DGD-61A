@@ -237,8 +237,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyList:
-  - {fileID: 7713208632523529648, guid: 584dc95e20c3d7a4096b2af2dc71928d, type: 3}
-  - {fileID: 5728812131415615002, guid: 71b4c7e29516b5f4fb99e7231642e589, type: 3}
+  - {fileID: 11400000, guid: 7030b2e2256d6844e8374402692e4530, type: 2}
+  - {fileID: 11400000, guid: 864eedca973b4134dbd933f5ac3bac66, type: 2}
 --- !u!4 &64285021
 Transform:
   m_ObjectHideFlags: 0
