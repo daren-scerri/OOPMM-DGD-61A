@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8876253849217695744}
   - component: {fileID: 4304122867472185514}
   - component: {fileID: 8554711867144675903}
+  - component: {fileID: -8294349669561405809}
   - component: {fileID: 1458535511287890006}
   - component: {fileID: 272036960549147926}
   m_Layer: 0
@@ -100,8 +101,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitpoints: 5
-  strength: 3
-  speed: 1
+  start_strength: 0
+  start_speed: 0
+  _strength: 0
+--- !u!114 &-8294349669561405809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5728812131415615002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 619fb0ba801fb394d976645c82b524dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!60 &1458535511287890006
 PolygonCollider2D:
   m_ObjectHideFlags: 0
