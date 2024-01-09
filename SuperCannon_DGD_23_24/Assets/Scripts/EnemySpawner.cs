@@ -6,6 +6,24 @@ public class EnemySpawner : MonoBehaviour
 {
     public List<EnemySO> enemyList = new List<EnemySO>();
     // Start is called before the first frame update
+
+    public static EnemySpawner myEnemySpawner;
+
+
+    private void Awake()
+    {
+        if (myEnemySpawner == null)
+        {
+            myEnemySpawner = this;
+        }
+        else
+        {
+            Debug.Log("Destroying unwanted enemyspawner!!!");
+            Destroy(gameObject);
+        }
+    }
+
+
     void Start()
     {
         StartCoroutine(SpawnEnemies());
