@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CannonController : MonoBehaviour
+public class CannonController : Singleton<CannonController>
 {
     Quaternion clampRotationLow, clampRotationHigh;
     [SerializeField] GameObject bullet1prefab;

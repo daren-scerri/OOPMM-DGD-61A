@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour
+public class EnemySpawner : Singleton<EnemySpawner>
 {
     public List<EnemySO> enemyList = new List<EnemySO>();
     // Start is called before the first frame update
@@ -10,18 +10,7 @@ public class EnemySpawner : MonoBehaviour
     public static EnemySpawner myEnemySpawner;
 
 
-    private void Awake()
-    {
-        if (myEnemySpawner == null)
-        {
-            myEnemySpawner = this;
-        }
-        else
-        {
-            Debug.Log("Destroying unwanted enemyspawner!!!");
-            Destroy(gameObject);
-        }
-    }
+
 
 
     void Start()

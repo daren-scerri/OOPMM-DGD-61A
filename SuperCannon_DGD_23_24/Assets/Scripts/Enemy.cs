@@ -31,8 +31,9 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.name.Contains("Floor"))
         {
-            GameData.PlayerHealth--;
-            Debug.Log("Player health: " + GameData.PlayerHealth.ToString());
+            //GameData.PlayerHealth--;
+            //Debug.Log("Player health: " + GameData.PlayerHealth.ToString());
+            GameManager.Instance.PlayerDamage();
             Destroy(this.gameObject);
 
         }
