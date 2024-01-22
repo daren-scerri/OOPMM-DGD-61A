@@ -8,7 +8,7 @@ public class KillBehaviour : MonoBehaviour, ITakeDamage
     {
         //GameData.Score += hitpoints;
         //Debug.Log("Score: " + GameData.Score.ToString());
-        GameManager.Instance.OnEnemyDie();
+        GameManager.Instance.OnEnemyDie(hitpoints);
         Destroy(this.gameObject);
     }
 }

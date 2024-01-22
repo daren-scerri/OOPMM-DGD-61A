@@ -12,7 +12,7 @@ public void ApplyDamage(int  hitpoints)
         StartCoroutine(ApplyDamageEffect());
         if (_enemy._strength <= 0)
         {
-            GameManager.Instance.OnEnemyDie();
+            GameManager.Instance.OnEnemyDie(hitpoints);
             Destroy(this.gameObject);
         }
     }

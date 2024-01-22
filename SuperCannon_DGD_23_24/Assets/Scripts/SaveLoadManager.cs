@@ -16,6 +16,7 @@ public class SaveLoadManager
         BinaryFormatter bf = new BinaryFormatter();
 
         FileStream myfile = File.Create(Application.persistentDataPath + "/CannonData.save");
+        Debug.Log(Application.persistentDataPath.ToString());
         bf.Serialize(myfile, mySerializedData);  //Serialize and save
         myfile.Close();
         Debug.Log("FILE SAVED");

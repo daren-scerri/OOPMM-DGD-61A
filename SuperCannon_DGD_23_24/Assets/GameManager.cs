@@ -23,10 +23,10 @@ void Start()
     healthText.text = "Health: " + GameData.PlayerHealth.ToString();
 }
 
-public void OnEnemyDie()
+public void OnEnemyDie(int hitpoints)
 {
 
-    GameData.Score++;
+    GameData.Score+=hitpoints;
     playerScoreText.text = "Score: " + GameData.Score.ToString();
     mySaveLoadManager.SaveData();
 }
